@@ -9,9 +9,9 @@ Return the primary port for a given Service object.
     {{- end -}}
   {{- end -}}
 
-  {{- if eq 0 (len $enabledPorts) }}
-    {{- fail (printf "No ports are enabled for service \"%s\"!" .serviceName) }}
-  {{- end }}
+  # {{- if eq 0 (len $enabledPorts) }}
+  #   {{- fail (printf "No ports are enabled for service \"%s\"!" .serviceName) }}
+  # {{- end }}
 
   {{- $result := "" -}}
   {{- range $name, $port := $enabledPorts -}}

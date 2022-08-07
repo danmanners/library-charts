@@ -73,6 +73,7 @@ spec:
   ipFamilies:
     {{ toYaml . | nindent 4 }}
   {{- end }}
+  {{- if not (eq $svcType "ExternalName") }}
   ports:
   {{- range $name, $port := $values.ports }}
   {{- if $port.enabled }}
@@ -91,6 +92,7 @@ spec:
     {{- if (and (eq $svcType "NodePort") (not (empty $port.nodePort))) }}
     nodePort: {{ $port.nodePort }}
     {{ end }}
+  {{- end }}
   {{- end }}
   {{- end }}
   selector:
